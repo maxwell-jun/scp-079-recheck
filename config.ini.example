@@ -1,0 +1,71 @@
+[pyrogram]
+api_id = [DATA EXPUNGED]
+api_hash = [DATA EXPUNGED]
+
+[plugins]
+root = plugins
+include =
+    handlers.command
+    handlers.message
+
+[proxy]
+enabled = False
+hostname = 127.0.0.1
+port = 1080
+
+[basic]
+bot_token = [DATA EXPUNGED]
+prefix = /!
+
+[bots]
+avatar_id = [DATA EXPUNGED]
+captcha_id = [DATA EXPUNGED]
+clean_id = [DATA EXPUNGED]
+lang_id = [DATA EXPUNGED]
+long_id = [DATA EXPUNGED]
+noflood_id = [DATA EXPUNGED]
+noporn_id = [DATA EXPUNGED]
+nospam_id = [DATA EXPUNGED]
+recheck_id = [DATA EXPUNGED]
+tip_id = [DATA EXPUNGED]
+user_id = [DATA EXPUNGED]
+warn_id = [DATA EXPUNGED]
+
+[channels]
+critical_channel_id = [DATA EXPUNGED]
+debug_channel_id = [DATA EXPUNGED]
+exchange_channel_id = [DATA EXPUNGED]
+hide_channel_id = [DATA EXPUNGED]
+logging_channel_id = [DATA EXPUNGED]
+test_group_id = [DATA EXPUNGED]
+
+[custom]
+backup = [DATA EXPUNGED]
+date_reset = [DATA EXPUNGED]
+default_group_link = [DATA EXPUNGED]
+image_size = [DATA EXPUNGED]
+limit_track = [DATA EXPUNGED]
+project_link = https://scp-079.org/recheck/
+project_name = SCP-079-RECHECK
+threshold_drawings = [DATA EXPUNGED]
+threshold_drawings_hentai = [DATA EXPUNGED]
+threshold_hentai = [DATA EXPUNGED]
+threshold_porn = [DATA EXPUNGED]
+time_ban = [DATA EXPUNGED]
+time_new = [DATA EXPUNGED]
+time_punish = [DATA EXPUNGED]
+time_short = [DATA EXPUNGED]
+time_track = [DATA EXPUNGED]
+zh_cn = [DATA EXPUNGED]
+
+[emoji]
+emoji_ad_single = 15
+emoji_ad_total = 25
+emoji_many = 15
+emoji_protect = \U0001F465\U0001F310\U0001F464\U0001F4E2\U0001F512
+emoji_wb_single = 5
+emoji_wb_total = 10
+
+[encrypt]
+key = [DATA EXPUNGED]
+password = [DATA EXPUNGED]
