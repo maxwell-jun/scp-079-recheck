@@ -23,7 +23,7 @@ from pyrogram import Client, Message
 
 from .. import glovar
 from .channel import get_content
-from .etc import code, get_int, get_md5sum, get_text, lang, thread, user_mention
+from .etc import code, get_int, get_md5sum, get_text, lang, mention_id, thread
 from .file import delete_file, get_downloaded_path
 from .filters import is_detected_url
 from .image import get_file_id, get_porn_a, get_porn_b
@@ -64,13 +64,13 @@ def porn_test(client: Client, message: Message) -> bool:
         whitelisted = ((content and (content in glovar.except_ids["long"] or content in glovar.except_ids["temp"]))
                        or image_hash in glovar.except_ids["temp"])
         text += f"{lang('white_listed')}{lang('colon')}{code(whitelisted)}\n"
-        text = f"{lang('admin')}{lang('colon')}{user_mention(aid)}\n\n" + text
+        text = f"{lang('admin')}{lang('colon')}{mention_id(aid)}\n\n" + text
         thread(send_message, (client, glovar.test_group_id, text, message.message_id))
 
         # Model A
         porn_a = image_path and get_porn_a(image_path)
         if porn_a:
-            text = (f"{lang('admin')}{lang('colon')}{user_mention(aid)}\n\n"
+            text = (f"{lang('admin')}{lang('colon')}{mention_id(aid)}\n\n"
                     f"{lang('model_recheck')}{lang('colon')}{code('A')}\n")
 
             for image_type in ["drawings", "hentai", "neutral", "porn", "sexy"]:
@@ -81,7 +81,7 @@ def porn_test(client: Client, message: Message) -> bool:
         # Model B
         porn_b = get_porn_b(image_path)
         if porn_b:
-            text = (f"{lang('admin')}{lang('colon')}{user_mention(aid)}\n\n"
+            text = (f"{lang('admin')}{lang('colon')}{mention_id(aid)}\n\n"
                     f"{lang('model_recheck')}{lang('colon')}{code('B')}\n")
 
             for image_type in ["drawings", "hentai", "neutral", "porn", "sexy"]:
