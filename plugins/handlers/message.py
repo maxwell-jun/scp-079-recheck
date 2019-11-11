@@ -286,6 +286,8 @@ def init_group(client: Client, message: Message) -> bool:
 @Client.on_message(Filters.incoming & Filters.channel & ~Filters.command(glovar.all_commands, glovar.prefix)
                    & exchange_channel)
 def process_data(client: Client, message: Message) -> bool:
+    # Process the data in exchange channel
+    glovar.locks["receive"].acquire()
     try:
         data = receive_text_data(message)
 
@@ -470,6 +472,8 @@ def process_data(client: Client, message: Message) -> bool:
         return True
     except Exception as e:
         logger.warning(f"Process data error: {e}", exc_info=True)
+    finally:
+        glovar.locks["receive"].release()
 
     return False
 
