@@ -104,11 +104,14 @@ def is_class_e(_, message: Message) -> bool:
                 return True
 
         content = get_content(message)
-        if content:
-            if (content in glovar.except_ids["long"]
-                    or content in glovar.except_ids["temp"]
-                    or glovar.contents.get(content, "") == "sfw"):
-                return True
+
+        if not content:
+            return False
+
+        if (content in glovar.except_ids["long"]
+                or content in glovar.except_ids["temp"]
+                or glovar.contents.get(content, "") == "sfw"):
+            return True
     except Exception as e:
         logger.warning(f"Is class e error: {e}", exc_info=True)
 
@@ -150,7 +153,7 @@ def is_exchange_channel(_, message: Message) -> bool:
 def is_from_user(_, message: Message) -> bool:
     # Check if the message is sent from a user
     try:
-        if message.from_user:
+        if message.from_user and message.from_user.id != 777000:
             return True
     except Exception as e:
         logger.warning(f"Is from user error: {e}", exc_info=True)
@@ -279,15 +282,20 @@ def is_ban_text(text: str, ocr: bool, message: Message = None) -> bool:
         if is_regex_text("ban", text, ocr):
             return True
 
+        # ad + con
         ad = is_regex_text("ad", text, ocr) or is_emoji("ad", text, message)
         con = is_con_text(text, ocr)
+
         if ad and con:
             return True
 
+        # ad_ + con
         ad = is_ad_text(text, ocr)
+
         if ad and con:
             return True
 
+        # ad_ + ad_
         if ad:
             ad = is_ad_text(text, ocr, ad)
             return bool(ad)
@@ -333,6 +341,9 @@ def is_class_e_user(user: Union[int, User]) -> bool:
         else:
             uid = user.id
 
+        if uid in glovar.bot_ids:
+            return True
+
         group_list = list(glovar.admin_ids)
         for gid in group_list:
             if uid in glovar.admin_ids.get(gid, set()):
@@ -347,7 +358,6 @@ def is_con_text(text: str, ocr: bool) -> bool:
     # Check if the text is con text
     try:
         if (is_regex_text("con", text, ocr)
-                or is_regex_text("aff", text, ocr)
                 or is_regex_text("iml", text, ocr)
                 or is_regex_text("pho", text, ocr)):
             return True
@@ -712,5 +722,25 @@ def is_watch_user(user: User, the_type: str, now: int) -> bool:
             return True
     except Exception as e:
         logger.warning(f"Is watch user error: {e}", exc_info=True)
+
+    return False
+
+
+def is_wb_text(text: str, ocr: bool) -> bool:
+    # Check if the text is wb text
+    try:
+        if (is_regex_text("wb", text, ocr)
+                or is_regex_text("ad", text, ocr)
+                or is_regex_text("iml", text, ocr)
+                or is_regex_text("pho", text, ocr)
+                or is_regex_text("sho", text, ocr)
+                or is_regex_text("spc", text, ocr)):
+            return True
+
+        for c in ascii_lowercase:
+            if c not in {"i"} and is_regex_text(f"ad{c}", text, ocr):
+                return True
+    except Exception as e:
+        logger.warning(f"Is wb text error: {e}", exc_info=True)
 
     return False
