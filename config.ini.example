@@ -59,12 +59,12 @@ time_track = [DATA EXPUNGED]
 zh_cn = [DATA EXPUNGED]
 
 [emoji]
-emoji_ad_single = 15
-emoji_ad_total = 25
-emoji_many = 15
-emoji_protect = \U0001F465\U0001F310\U0001F464\U0001F4E2\U0001F512
-emoji_wb_single = 5
-emoji_wb_total = 10
+emoji_ad_single = [DATA EXPUNGED]
+emoji_ad_total = [DATA EXPUNGED]
+emoji_many = [DATA EXPUNGED]
+emoji_protect = [DATA EXPUNGED]
+emoji_wb_single = [DATA EXPUNGED]
+emoji_wb_total = [DATA EXPUNGED]
 
 [encrypt]
 key = [DATA EXPUNGED]

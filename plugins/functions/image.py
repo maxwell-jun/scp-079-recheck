@@ -21,7 +21,7 @@ import logging
 from pyrogram import Client, Message
 
 from .. import glovar
-from .etc import get_md5sum
+from .etc import get_md5sum, thread
 from .file import delete_file, get_downloaded_path
 from ..models.nsfw.nsfw_predict import predict
 from ..models.nsfw_detector import NSFWDetector
@@ -108,7 +108,7 @@ def get_image_hash(client: Client, message: Message) -> str:
             return ""
 
         result = get_md5sum("file", image_path)
-        delete_file(image_path)
+        thread(delete_file, (image_path,))
     except Exception as e:
         logger.warning(f"Get image hash error: {e}", exc_info=True)
 
