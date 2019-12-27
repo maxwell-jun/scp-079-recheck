@@ -422,7 +422,7 @@ sender: str = "RECHECK"
 
 should_hide: bool = False
 
-version: str = "0.2.4"
+version: str = "0.2.5"
 
 # Load data from pickle
 

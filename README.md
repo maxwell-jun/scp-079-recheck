@@ -4,7 +4,9 @@ This bot is used to recheck NSFW media messages.
 
 ## How to use
 
-See [this article](https://scp-079.org/recheck/).
+- See the [manual](https://telegra.ph/SCP-079-RECHECK-12-04)
+- See [this article](https://scp-079.org/recheck/) to build a bot by yourself
+- Discuss [group](https://t.me/SCP_079_CHAT)
 
 ## To Do List
 
@@ -17,9 +19,9 @@ See [this article](https://scp-079.org/recheck/).
 - Python 3.6 or higher
 - Debian 10: `sudo apt install libatlas-base-dev libblas-dev libhdf5-dev liblapack-dev opencc -y`
 - Install anacodna3 to `~/scp-079/conda`
-- `conda`: `conda create --name recheck tensorflow=1.14.0`
+- `conda`: `conda create --name recheck tensorflow=1.15.0`
 - `conda`: `conda activate recheck`
-- `pip`: `pip install -r requirements.txt` or `pip install -U APScheduler emoji keras==2.2.5 OpenCC Pillow pyAesCrypt pyrogram[fast] tensorflow==1.14.0`
+- `pip`: `pip install -r requirements.txt` or `pip install -U APScheduler emoji keras==2.2.5 OpenCC Pillow pyAesCrypt pyrogram[fast] tensorflow==1.15.0`
 
 ```bash
 mkdir -p ~/scp-079/recheck/models
